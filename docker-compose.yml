@@ -1,39 +1,4 @@
 version: '3'
-
-services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
-    volumes:
-      - /app/node_modules
-      - .:/app
-    environment:
-      - DB_HOST=192.168.100.27
-      - DB_USER=root
-      - DB_PASSWORD=
-      - DB_NAME=kodipoint_test
-      - JWT_SECRET=12345qwerty
-      - EMAIL_SECRET=91lx5912clT
-      - ADMIN_EMAIL=nascal3@gmail.com
-      - SMS_API_USER=sandbox
-      - SMS_API_KEY=027d931a0d3fee29b96a0784cc337ff570af638547b143eba67d1f1b9f8a3a38
-      - PORT=3000
-      command: [ "npm", "app.js" ]
-
-  tests:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    volumes:
-      - /app/node_modules
-      - .:/app
-    command: ["npm", "run", "test:unit"]
-
-
-version: '3'
 services:
   vueapp:
     build:
@@ -50,7 +15,7 @@ services:
   nginx:
     image: nginx
     ports:
-      - 80:80
+      - 3000:80
     volumes:
       - ./dist:/usr/share/nginx/html
 

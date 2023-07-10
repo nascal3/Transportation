@@ -13,7 +13,7 @@ ENV CONVOY_API=$CONVOY_API
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci --quiet
+RUN npm i --legacy-peer-deps
 
 COPY . .
 
@@ -22,12 +22,11 @@ RUN npm run build
 # Stage 2: Serve Vue.js files using NGINX
 FROM nginx:alpine
 
-COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-EXPOSE 8080
+EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
 
