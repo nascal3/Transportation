@@ -10,6 +10,10 @@ export default {
 
   components: {
     HelloWorld
+  },
+
+  mounted () {
+    console.log('>>>', process.env.VUE_APP_GOOGLE_CLIENT_ID)
   }
 }
 </script>
