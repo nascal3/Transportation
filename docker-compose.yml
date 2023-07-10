@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: vue-app
     volumes:
       - ./app:/app
     environment:
@@ -13,11 +14,14 @@ services:
     command: npm run build
 
   nginx:
+    restart: always
     image: nginx
+    container_name: nginx-vue
     ports:
       - 3000:80
     volumes:
       - ./dist:/usr/share/nginx/html
+      - ./nginx:/etc/nginx/conf.d
 
 
 

@@ -1,5 +1,5 @@
 # Stage 1: Build Vue.js project
-FROM node:alpine AS builder
+FROM node:lts-alpine AS builder
 
 ARG ADMIN_EMAIL
 ARG GOOGLE_CLIENT_ID
@@ -13,14 +13,14 @@ ENV CONVOY_API=$CONVOY_API
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm i --legacy-peer-deps
+RUN npm install --legacy-peer-deps
 
 COPY . .
 
 RUN npm run build
 
 # Stage 2: Serve Vue.js files using NGINX
-FROM nginx:alpine
+FROM nginx:stable-alpine AS production-stage
 
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
