@@ -2,7 +2,7 @@
   <v-container>
     <v-card class="d-flex align-center pa-4" max-width="550" outlined>
       <v-form ref="form" enctype="multipart/form-data" v-model="valid" @submit.prevent="sendRequest">
-        <h2 class="section-title">Cargo information</h2>
+        <h2>Cargo information</h2>
         <v-row>
           <v-col cols="12" md="6">
             <v-text-field
@@ -30,7 +30,7 @@
           </v-col>
         </v-row>
 
-        <h2 class="section-title">Cargo Dimensions</h2>
+        <h2>Cargo Dimensions</h2>
 
         <v-row>
           <v-col cols="12" md="4">
