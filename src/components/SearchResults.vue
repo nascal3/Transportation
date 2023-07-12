@@ -42,8 +42,13 @@ export default {
       searchResultsTransporters: ['transporters/showSearchResultsTransporters']
     }),
 
+    /**
+     * Check if the search results are available
+     * @method noResultsFound
+     * @return {Boolean} return true or false if the results have no data contained
+     */
     noResultsFound () {
-      return this.searchResultsTransporters.length < 0
+      return this.searchResultsTransporters?.length < 0
     }
 
   }

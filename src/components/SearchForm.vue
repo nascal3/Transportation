@@ -66,7 +66,7 @@
               block
               outlined
               color="error"
-              @click="reset"
+              @click="resetForm"
             >
               Clear
             </v-btn>
@@ -141,14 +141,17 @@ export default {
   },
 
   watch: {
+    /**
+     * Map payload of transporter details to transporters
+     * @method cargoWeight
+     * @param  {String} newValue string value of updated weight input
+     * @return {String} Converted string value of number to be comma separated in thousands
+     */
     cargoWeight (newValue) {
       const result = newValue.replace(/\D/g, '')
         .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
       this.$nextTick(() => {
         this.cargoWeight = result
-        const numValue = this.formatAmountToNumber(this.cargoWeight)
-        this.disabled = !numValue
-        this.$emit('amount', this.cargoWeight)
       })
     }
   },
@@ -165,7 +168,6 @@ export default {
       if (this.valid) {
         this.showLoader = true
 
-        // eslint-disable-next-line no-unused-vars
         const payload = {
           locationName: this.locationName,
           cargoType: this.cargoType,
@@ -182,7 +184,7 @@ export default {
       }
     },
 
-    reset () {
+    resetForm () {
       this.resetSearchResults()
       this.resetValidation()
       this.$refs.form.reset()

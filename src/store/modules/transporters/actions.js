@@ -15,6 +15,13 @@ const searchTransporters = async ({ commit, state }, payload) => {
   }
 }
 
+/**
+ * Map payload of transporter details to transporters
+ * @method mapSearchResults
+ * @param  {Object} payload vuex mutations
+ * @param  {Object} transporters vuex mutations
+ * @return {Array} array of all transporters found matching the search criteria
+ */
 const mapSearchResults = async (payload, transporters) => {
   const { locationName, cargoType, cargoWeight } = payload
   const weight = parseInt(cargoWeight) || 0
@@ -27,7 +34,7 @@ const mapSearchResults = async (payload, transporters) => {
 }
 
 /**
- * Removes details of the transporters searched for
+ * Removes details of the transporters searched
  * @method resetSearchResults
  * @param  {Object} commit vuex mutations
  */
