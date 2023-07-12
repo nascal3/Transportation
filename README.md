@@ -1,4 +1,5 @@
-# Vue2 template
+# Transportation
+Search for transporters based on their location and cargo requirements.
 
 ## Project setup
 ```
