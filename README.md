@@ -27,5 +27,17 @@ npm run build
 npm run lint
 ```
 
+### Run tests in debug mode (GUI)
+```
+npm run debug:test
+```
+Select the test you wish to run in debug mode. Recommended for investigating test failures.
+
+### Run tests in headless mode (CLI)
+```
+npm run debug:test
+```
+Select the test you wish to run in headless. Recommended for running tests for CI/CD purpose.
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
