@@ -124,9 +124,18 @@ export default {
         locationNameRequired: value => !!value || 'Location name required',
         cargoTypeRequired: value => !!value || 'Cargo type required',
         cargoWeightRequired: value => !!value || 'Cargo weight required',
-        cargoLengthRequired: value => !!value || 'Length of cargo required',
-        cargoWidthRequired: value => !!value || 'Width of cargo required',
-        cargoHeightRequired: value => !!value || 'Height of cargo required'
+        cargoLengthRequired: value => {
+          const pattern = /^[1-9]\d*$/
+          return pattern.test(value) || 'Cargo length is required to be greater than 0'
+        },
+        cargoWidthRequired: value => {
+          const pattern = /^[1-9]\d*$/
+          return pattern.test(value) || 'Cargo width is required to be greater than 0'
+        },
+        cargoHeightRequired: value => {
+          const pattern = /^[1-9]\d*$/
+          return pattern.test(value) || 'Cargo height is required to be greater than 0'
+        }
       }
     }
   },
