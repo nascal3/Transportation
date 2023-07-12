@@ -31,7 +31,7 @@ npm run lint
 ```
 npm run debug:test
 ```
-Select the test you wish to run in debug mode. Recommended for investigating test failures.
+Select the test you wish to run in debug mode from the Cypress pop-up window. Recommended for investigating test failures.
 
 ### Run tests in headless mode (CLI)
 ```
