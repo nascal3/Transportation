@@ -175,8 +175,10 @@ export default {
           cargoWeight: this.cargoWeight
         }
 
-        await this.searchTransporters(payload)
-        this.showLoader = false
+        setTimeout(async () => {
+          await this.searchTransporters(payload)
+          this.showLoader = false
+        }, 2000)
       }
     },
 
