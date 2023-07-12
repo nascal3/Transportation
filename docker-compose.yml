@@ -7,10 +7,6 @@ services:
     container_name: vue-app
     volumes:
       - ./app:/app
-    environment:
-      - VUE_APP_GOOGLE_CLIENT_ID=12345qwerty
-      - VUE_APP_CONVOY_API=91lx5912clT
-      - VUE_APP_ADMIN_EMAIL=nascal3@gmail.com
     command: npm run build
 
   nginx:
