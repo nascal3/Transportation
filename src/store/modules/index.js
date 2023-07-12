@@ -7,7 +7,6 @@ function toCamelCase (str) {
 const requireModule = require.context('./', true, /\.js$/) // extract js files inside modules folder
 const modules = {}
 
-console.log('X>', requireModule.keys())
 requireModule.keys().forEach(fileName => {
   if (fileName === './index.js' || // skip the root index.js file in the modules folder
     fileName.includes('getters') || // skip the getters.js in a module folder
