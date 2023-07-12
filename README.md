@@ -11,6 +11,12 @@ npm install  --legacy-peer-deps
 npm run serve
 ```
 
+### Test data to use
+Test data to use for the search form can be found in the following location
+```
+test/e2e/fixtures/transporters.json
+```
+
 ### Compiles and minifies for production
 ```
 npm run build
