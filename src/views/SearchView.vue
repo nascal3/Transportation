@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import HelloWorld from '../components/HelloWorld'
+import HelloWorld from '../components/RequestForm'
 
 export default {
   name: 'Home-page',
