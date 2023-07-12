@@ -3,7 +3,7 @@ Search for transporters based on their location and cargo requirements.
 
 ## Project setup
 ```
-npm install
+npm install  --legacy-peer-deps
 ```
 
 ### Compiles and hot-reloads for development
