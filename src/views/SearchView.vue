@@ -1,19 +1,21 @@
 <template>
-  <hello-world />
+  <section class="d-flex flex-column align-center justify-center pl-4">
+    <search-form />
+    <search-results/>
+  </section>
 </template>
 
 <script>
-import HelloWorld from '../components/RequestForm'
+import SearchForm from '../components/SearchForm'
+import SearchResults from '../components/SearchResults'
 
 export default {
   name: 'Home-page',
 
   components: {
-    HelloWorld
-  },
-
-  mounted () {
-    console.log('>>>', process.env.VUE_APP_GOOGLE_CLIENT_ID)
+    SearchForm,
+    SearchResults
   }
+
 }
 </script>

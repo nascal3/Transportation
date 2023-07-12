@@ -1,0 +1,124 @@
+{
+  "data": [
+    {
+      "transporter_name": "ABC Transport",
+      "location": "Nairobi",
+      "cargo_types": "Furniture",
+      "maximum_weight": 500
+    },
+    {
+      "transporter_name": "XYZ Logistics",
+      "location": "Kisumu",
+      "cargo_types": "Electronics",
+      "maximum_weight": 1000
+    },
+    {
+      "transporter_name": "PQR Shipping",
+      "location": "Nakuru",
+      "cargo_types": "Food",
+      "maximum_weight": 250
+    },
+    {
+      "transporter_name": "LMN Express",
+      "location": "Mombasa",
+      "cargo_types": "Clothing",
+      "maximum_weight": 800
+    },
+    {
+      "transporter_name": "DEF Carriers",
+      "location": "Voi",
+      "cargo_types": "Chemicals",
+      "maximum_weight": 700
+    },
+    {
+      "transporter_name": "GHI Movers",
+      "location": "Nyeri",
+      "cargo_types": "Appliances",
+      "maximum_weight": 1200
+    },
+    {
+      "transporter_name": "JKL Shipping",
+      "location": "Kiambu",
+      "cargo_types": "Books",
+      "maximum_weight": 300
+    },
+    {
+      "transporter_name": "MNO Logistics",
+      "location": "City H",
+      "cargo_types": "Toys",
+      "maximum_weight": 400
+    },
+    {
+      "transporter_name": "RST Carriers",
+      "location": "Kakamega",
+      "cargo_types": "Automobiles",
+      "maximum_weight": 1500
+    },
+    {
+      "transporter_name": "UVW Express",
+      "location": "Isiolo",
+      "cargo_types": "Medical Supplies",
+      "maximum_weight": 600
+    },
+    {
+      "transporter_name": "XYZ Logistics",
+      "location": "Naivasha",
+      "cargo_types": "Electronics",
+      "maximum_weight": 900
+    },
+    {
+      "transporter_name": "PQR Shipping",
+      "location": "Meru",
+      "cargo_types": "Food",
+      "maximum_weight": 350
+    },
+    {
+      "transporter_name": "ABC Transport",
+      "location": "Mombasa",
+      "cargo_types": "Furniture",
+      "maximum_weight": 550
+    },
+    {
+      "transporter_name": "DEF Carriers",
+      "location": "Nairobi",
+      "cargo_types": "Chemicals",
+      "maximum_weight": 750
+    },
+    {
+      "transporter_name": "GHI Movers",
+      "location": "Nakuru",
+      "cargo_types": "Appliances",
+      "maximum_weight": 1000
+    },
+    {
+      "transporter_name": "JKL Shipping",
+      "location": "Homa bay",
+      "cargo_types": "Books",
+      "maximum_weight": 400
+    },
+    {
+      "transporter_name": "LMN Express",
+      "location": "Mombasa",
+      "cargo_types": "Clothing",
+      "maximum_weight": 650
+    },
+    {
+      "transporter_name": "RST Carriers",
+      "location": "Kisumu",
+      "cargo_types": "Automobiles",
+      "maximum_weight": 1800
+    },
+    {
+      "transporter_name": "MNO Logistics",
+      "location": "Lamu",
+      "cargo_types": "Toys",
+      "maximum_weight": 500
+    },
+    {
+      "transporter_name": "UVW Express",
+      "location": "Taita",
+      "cargo_types": "Medical Supplies",
+      "maximum_weight": 700
+    }
+  ]
+}

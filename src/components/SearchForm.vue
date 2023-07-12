@@ -36,6 +36,7 @@
           <v-col cols="12" md="4">
             <v-text-field
               v-model="cargoLength"
+              type="number"
               label="Length*"
               :rules="[rules.cargoLengthRequired]"
             ></v-text-field>
@@ -43,6 +44,7 @@
           <v-col cols="12" md="4">
             <v-text-field
               v-model="cargoWidth"
+              type="number"
               label="Width*"
               :rules="[rules.cargoWidthRequired]"
             ></v-text-field>
@@ -50,6 +52,7 @@
           <v-col cols="12" md="4">
             <v-text-field
               v-model="cargoHeight"
+              type="number"
               label="Height*"
               :rules="[rules.cargoHeightRequired]"
             ></v-text-field>
@@ -88,6 +91,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import formatNumbers from '@/mixins/formatNumbers'
 
 export default {
@@ -102,13 +106,20 @@ export default {
       cargoType: null,
       cargoLength: null,
       cargoWidth: null,
+      cargoWeight: null,
       cargoHeight: null,
+      showLoader: false,
       cargoTypes: [
-        { text: 'Food', value: 'FD' },
-        { text: 'Furniture', value: 'FA' },
-        { text: 'Construction material', value: 'CM' }
+        { text: 'Food', value: 'Food' },
+        { text: 'Furniture', value: 'Furniture' },
+        { text: 'Medical Supplies', value: 'Medical Supplies' },
+        { text: 'Automobiles', value: 'Automobiles' },
+        { text: 'Clothing', value: 'Clothing' },
+        { text: 'Books', value: 'Books' },
+        { text: 'Appliances', value: 'Books' },
+        { text: 'Chemicals', value: 'Chemicals' },
+        { text: 'Electronics', value: 'Electronics' }
       ],
-      cargoWeight: '',
       rules: {
         locationNameRequired: value => !!value || 'Location name required',
         cargoTypeRequired: value => !!value || 'Cargo type required',
@@ -126,20 +137,41 @@ export default {
         .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
       // eslint-disable-next-line vue/valid-next-tick
       await this.$nextTick(() => {
-        this.amount = result
-        const numValue = this.formatAmountToNumber(this.amount)
+        this.cargoWeight = result
+        const numValue = this.formatAmountToNumber(this.cargoWeight)
         this.disabled = !numValue
-        this.$emit('amount', this.amount)
+        this.$emit('amount', this.cargoWeight)
       })
     }
   },
 
   methods: {
-    sendRequest () {
+    ...mapActions('transporters', {
+      searchTransporters: 'searchTransporters'
+    }),
+
+    async sendRequest () {
       this.valid = this.$refs.form.validate()
 
       if (this.valid) {
-        this.resetValidation()
+        this.showLoader = true
+
+        // eslint-disable-next-line no-unused-vars
+        const payload = {
+          locationName: this.locationName,
+          cargoType: this.cargoType,
+          cargoLength: this.cargoLength,
+          cargoWidth: this.cargoWidth,
+          cargoHeight: this.cargoHeight,
+          cargoWeight: this.cargoWeight
+        }
+
+        try {
+          await this.searchTransporters(payload)
+          this.resetValidation()
+        } catch (e) {
+
+        }
       }
     },
 
