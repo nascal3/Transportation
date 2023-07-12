@@ -1,7 +1,17 @@
 <template>
   <v-container>
-    <v-card class="pa-4" max-width="550" outlined>
-      <h2 class="section-title">Search transporter</h2>
+    <v-card class="pa-4" max-width="700" outlined>
+      <h2 class="section-title">Search results</h2>
+      <div v-if="noResultsFound">
+        No results found!
+      </div>
+      <v-data-table
+        v-else
+        :headers="headers"
+        :items="searchResultsTransporters"
+        :items-per-page="7"
+        class="elevation-1"
+      ></v-data-table>
 
     </v-card>
   </v-container>
@@ -11,42 +21,29 @@
 import { mapGetters } from 'vuex'
 
 export default {
+  data () {
+    return {
+      headers: [
+        {
+          text: 'Transporter Name\n',
+          align: 'start',
+          sortable: false,
+          value: 'transporter_name'
+        },
+        { text: 'Location', value: 'location' },
+        { text: 'Cargo Types Supported', value: 'cargo_types' },
+        { text: 'Maximum Weight Capacity (KG)', value: 'maximum_weight' }
+      ]
+    }
+  },
 
-  props: {
-    searchDetails: {
-      type: Object,
-      default: () => {
-      }
-    },
+  computed: {
+    ...mapGetters({
+      searchResultsTransporters: ['transporters/showSearchResultsTransporters']
+    }),
 
-    data () {
-      return {
-        transporterName: ''
-      }
-    },
-
-    watch: {
-      searchDetails (newValue) {
-        if (Object.keys(newValue).length) {
-          this.showResults()
-        }
-      }
-    },
-
-    computed: {
-      ...mapGetters({
-        searchResultsTransporters: ['transporters/showSearchResultsTransporters']
-      })
-    },
-
-    methods: {
-      showResults () {
-        // this.matchresults()
-      }
-
-      // matchresults () {
-      //   this.searchDetails
-      // }
+    noResultsFound () {
+      return this.searchResultsTransporters.length < 0
     }
 
   }

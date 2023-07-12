@@ -9,9 +9,7 @@
 const searchTransporters = async ({ commit, state }, payload) => {
   try {
     const response = await mapSearchResults(payload, state.allTransporters)
-    if (response.status === 200) {
-      commit('SET_TRANSPORTER_RESULTS', response.data)
-    }
+    commit('SET_TRANSPORTER_RESULTS', response)
   } catch (err) {
     throw err.message
   }
@@ -19,11 +17,12 @@ const searchTransporters = async ({ commit, state }, payload) => {
 
 const mapSearchResults = async (payload, transporters) => {
   const { locationName, cargoType, cargoWeight } = payload
+  const weight = parseInt(cargoWeight) || 0
 
   return transporters.filter(transporter => {
-    return transporter.transporter_name.toLowerCase() === locationName.toLowerCase() ||
-      transporter.cargo_types.toLowerCase() === cargoType.toLowerCase() ||
-      transporter.maximum_weight_ <= cargoWeight
+    return transporter.location.toLowerCase() === locationName.toLowerCase() &&
+      transporter.cargo_types.toLowerCase() === cargoType.toLowerCase() &&
+      transporter.maximum_weight > parseInt(weight)
   })
 }
 

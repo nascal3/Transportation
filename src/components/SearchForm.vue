@@ -24,7 +24,7 @@
           <v-col cols="12" md="6">
             <v-text-field
               v-model="cargoWeight"
-              label="Cargo Weight*"
+              label="Cargo Weight (KG)*"
               :rules="[rules.cargoWeightRequired]"
             ></v-text-field>
           </v-col>
@@ -68,7 +68,7 @@
               color="error"
               @click="reset"
             >
-              Cancel
+              Clear
             </v-btn>
           </v-col>
           <v-col cols="12" md="6">
@@ -106,7 +106,7 @@ export default {
       cargoType: null,
       cargoLength: null,
       cargoWidth: null,
-      cargoWeight: null,
+      cargoWeight: 0,
       cargoHeight: null,
       showLoader: false,
       cargoTypes: [
@@ -132,11 +132,10 @@ export default {
   },
 
   watch: {
-    async cargoWeight (newValue) {
+    cargoWeight (newValue) {
       const result = newValue.replace(/\D/g, '')
         .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-      // eslint-disable-next-line vue/valid-next-tick
-      await this.$nextTick(() => {
+      this.$nextTick(() => {
         this.cargoWeight = result
         const numValue = this.formatAmountToNumber(this.cargoWeight)
         this.disabled = !numValue
@@ -146,9 +145,10 @@ export default {
   },
 
   methods: {
-    ...mapActions('transporters', {
-      searchTransporters: 'searchTransporters'
-    }),
+    ...mapActions('transporters', [
+      'searchTransporters',
+      'resetSearchResults'
+    ]),
 
     async sendRequest () {
       this.valid = this.$refs.form.validate()
@@ -166,16 +166,14 @@ export default {
           cargoWeight: this.cargoWeight
         }
 
-        try {
-          await this.searchTransporters(payload)
-          this.resetValidation()
-        } catch (e) {
-
-        }
+        await this.searchTransporters(payload)
+        this.showLoader = false
       }
     },
 
     reset () {
+      this.resetSearchResults()
+      this.resetValidation()
       this.$refs.form.reset()
     },
 

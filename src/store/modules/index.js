@@ -15,8 +15,7 @@ requireModule.keys().forEach(fileName => {
     fileName.includes('actions.js') // skip the actions.js in a module folder
   ) return
 
-  const moduleName = toCamelCase(fileName.replace(/(\.\/|index\.js)/g, '')) // camel case the module name
-
+  const moduleName = toCamelCase(fileName.replace(/^\.\/|\/index\.js$/g, ''))
   modules[moduleName] = requireModule(fileName).default
 })
 export default modules
